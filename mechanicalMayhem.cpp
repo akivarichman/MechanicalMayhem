@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iomanip>
 using namespace std;
 
 struct tileNum { // create a struct called "tileNumber" that has four string characteristics (top, right, bottom, left)
@@ -9,10 +10,6 @@ struct tileNum { // create a struct called "tileNumber" that has four string cha
 };
 
 tileNum one, two, three, four, five, six, seven, eight, nine, ten, eleven, twelve, thirteen, fourteen, fifteen, sixteen;
-tileNum *p1 = &one; tileNum *p2 = &two; tileNum *p3 = &three; tileNum *p4 = &four; tileNum *p5 = &five;
-tileNum *p6 = &six; tileNum *p7 = &seven; tileNum *p8 = &eight; tileNum *p9 = &nine; tileNum *p10 = &ten;
-tileNum *p11 = &eleven; tileNum *p12 = &twelve; tileNum *p13 = &thirteen; tileNum *p14 = &fourteen; 
-tileNum *p15 = &fifteen; tileNum *p16 = &sixteen;
 
 tileNum numToTile(int x) { // function to convert a number into a tile
     if(x == 1) return one; if(x == 2) return two; if(x == 3) return three; if(x == 4) return four; 
@@ -22,8 +19,8 @@ tileNum numToTile(int x) { // function to convert a number into a tile
     else return sixteen;
 }
 
-void placeGears(tileNum *x, string t, string b, string r, string l) {
-    (*x).top = t; (*x).bottom = b; (*x).right = r; (*x).left = l;
+void placeGears(tileNum& x, string t, string b, string r, string l) {
+    x.top = t; x.bottom = b; x.right = r; x.left = l;
 }
 
 bool ok(int order[], int index) { 
@@ -53,7 +50,7 @@ bool ok(int order[], int index) {
 void print(int solution[]) {
     for(int i = 0; i < 16; i=i+4) {
         for(int j = 0; j < 4; j++) {
-            cout << solution[i+j] << " ";
+            cout << left << setw(5) << solution[i+j];
         }
         cout << endl;
     }
@@ -64,29 +61,31 @@ int main(){
     // Gear names: tooManyOne / orangeOneOne / smallOne / sunLookingOne / dontGoTogether / boatOne / spikeyOneyOne / bigOne   
     // Directions: top / bottom / right / left
     
-    placeGears(p13, "tooManyOne" , "smallOne" , "sunLookingOne" , "bigOne");
-    placeGears(p2,"sunLookingOne","orangeOne", "tooManyOne" , "tooManyOne");
-    placeGears(p10, "dontGoTogether" , "bigOne" , "boatOne" , "bigOne");
-    placeGears(p9, "tooManyOne" , "tooManyOne" , "spikeyOne" , "sunLookingOne");
-    placeGears(p1, "boatOne" , "orangeOne" , "orangeOne" , "spikeyOne");
-    placeGears(p6, "orangeOne" , "sunLookingOne" , "orangeOne" , "tooManyOne");
-    placeGears(p3, "smallOne" , "tooManyOne" , "bigOne" , "sunLookingOne");
-    placeGears(p4, "tooManyOne" , "smallOne" , "sunLookingOne" , "orangeOne");
-    placeGears(p5, "smallOne" , "boatOne" , "tooManyOne" , "sunLookingOne");
-    placeGears(p14, "smallOne" , "sunLookingOne" , "tooManyOne" , "sunLookingOne");
-    placeGears(p16, "sunLookingOne" , "orangeOne" , "tooManyOne" , "sunLookingOne");
-    placeGears(p12, "smallOne" , "dontGoTogether" , "spikeyOne" , "smallOne");
-    placeGears(p11, "orangeOne" , "tooManyOne" , "sunLookingOne" , "boatOne");
-    placeGears(p15, "sunLookingOne" , "orangeOne" , "smallOne" , "tooManyOne");
-    placeGears(p8, "orangeOne" , "boatOne" , "tooManyOne" , "spikeyOne");
-    placeGears(p7, "orangeOne" , "tooManyOne" , "sunLookingOne" , "orangeOne");
+    placeGears(one, "boatOne" , "orangeOne" , "orangeOne" , "spikeyOne");
+    placeGears(two,"sunLookingOne","orangeOne", "tooManyOne" , "tooManyOne");
+    placeGears(three, "smallOne" , "tooManyOne" , "bigOne" , "sunLookingOne");
+    placeGears(four, "tooManyOne" , "smallOne" , "sunLookingOne" , "orangeOne");
+    placeGears(five, "smallOne" , "boatOne" , "tooManyOne" , "sunLookingOne");
+    placeGears(six, "orangeOne" , "sunLookingOne" , "orangeOne" , "tooManyOne");
+    placeGears(seven, "orangeOne" , "tooManyOne" , "sunLookingOne" , "orangeOne");
+    placeGears(eight, "orangeOne" , "boatOne" , "tooManyOne" , "spikeyOne");
+    placeGears(nine, "tooManyOne" , "tooManyOne" , "spikeyOne" , "sunLookingOne");
+    placeGears(ten, "dontGoTogether" , "bigOne" , "boatOne" , "bigOne");
+    placeGears(eleven, "orangeOne" , "tooManyOne" , "sunLookingOne" , "boatOne");
+    placeGears(twelve, "smallOne" , "dontGoTogether" , "spikeyOne" , "smallOne");
+    placeGears(thirteen, "tooManyOne" , "smallOne" , "sunLookingOne" , "bigOne");
+    placeGears(fourteen, "smallOne" , "sunLookingOne" , "tooManyOne" , "sunLookingOne");
+    placeGears(fifteen, "sunLookingOne" , "orangeOne" , "smallOne" , "tooManyOne");
+    placeGears(sixteen, "sunLookingOne" , "orangeOne" , "tooManyOne" , "sunLookingOne");
 
     int tileOrder[16], index = 0; // int array size 16 that representd the grid going from right to left starting from the top to the bottom
     tileOrder[index] = 1;
+    bool isSolution = false;
 
     while(index > -1) { // code runs until we cant backtrack anymore
         index++;
         if(index == 16) { // prints the solution if we made it through all 16 spaces (0-15) succesfully, then backtrack
+            isSolution = true;
             print(tileOrder);
             index--;
         }
@@ -102,6 +101,9 @@ int main(){
                 break;
             }
         }
+    }
+    if(!isSolution) {
+        cout << "No solution";
     }
 
     return 0;
