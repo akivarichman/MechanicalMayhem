@@ -2,6 +2,11 @@
 #include <iomanip>
 using namespace std;
 
+// - have to check user input
+//    - empty white space
+//    - do I care about capital vs lowercase
+//    - there should be a message for no solution 
+
 struct tileNum { // create a struct called "tileNumber" that has four string characteristics (top, right, bottom, left)
     string top;
     string bottom;
