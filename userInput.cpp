@@ -22,6 +22,13 @@ tileNum numToTile(int x) { // function to convert a number into a tile
     else return sixteen;
 }
 
+tileNum* numToPointer(int x) { // function to convert a number into a tile
+    if(x == 1) return p1; if(x == 2) return p2; if(x == 3) return p3; if(x == 4) return p4; 
+    if(x == 5) return p5; if(x == 6) return p6; if(x == 7) return p7; if(x == 8) return p8; 
+    if(x == 9) return p9; if(x == 10) return p10; if(x == 11) return p11; if(x == 12) return p12; 
+    if(x == 13) return p13; if(x == 14) return p14; if(x == 15) return p15; else return p16;
+}
+
 void placeGears(tileNum *x, string t, string b, string r, string l) {
     (*x).top = t; (*x).bottom = b; (*x).right = r; (*x).left = l;
 }
@@ -83,46 +90,19 @@ int main(){
 */
 
     string up, down, ri, le;
- //  int sq = 1;
- /*   
-    while(sq < 17) {
-        cout << "Gear on the top of tile #1: ";
-        cin >> up;
-
-        one.top = up;
-        //(numToTile(sq)).top = up;
-
-         //cout << one.top;
-        cout << numToTile(sq).top;
-
-        sq++;
-    }
-*/
-
-    for(int i = 1; i <= 16; i++) {
-        cout << "Top Gear on Tile #" << i << ": "; cin >> up; 
-        cout << "Bottom Gear on Tile #" << i << ": "; cin >> down;
-        cout << "Rightmost Gear on Tile #" << i << ": "; cin >> ri;
-        cout << "Leftmost Gear on Tile #" << i << ": "; cin >> le;
-        if(i == 1){ one.top = up; one.bottom = down; one.right = ri; one.left = le; }
-        else if(i == 2){ two.top = up; two.bottom = down; two.right = ri; two.left = le; }
-        else if(i == 3){ three.top = up; three.bottom = down; three.right = ri; three.left = le; }
-        else if(i == 4){ four.top = up; four.bottom = down; four.right = ri; four.left = le; }
-        else if(i == 5){ five.top = up; five.bottom = down; five.right = ri; five.left = le; }
-        else if(i == 6){ six.top = up; six.bottom = down; six.right = ri; six.left = le; }
-        else if(i == 7){ seven.top = up; seven.bottom = down; seven.right = ri; seven.left = le; }
-        else if(i == 8){ eight.top = up; eight.bottom = down; eight.right = ri; eight.left = le; }
-        else if(i == 9){ nine.top = up; nine.bottom = down; nine.right = ri; nine.left = le; }
-        else if(i == 10){ ten.top = up; ten.bottom = down; ten.right = ri; ten.left = le; }
-        else if(i == 11){ eleven.top = up; eleven.bottom = down; eleven.right = ri; eleven.left = le; }
-        else if(i == 12){ twelve.top = up; twelve.bottom = down; twelve.right = ri; twelve.left = le; }
-        else if(i == 13){ thirteen.top = up; thirteen.bottom = down; thirteen.right = ri; thirteen.left = le; }
-        else if(i == 14){ fourteen.top = up; fourteen.bottom = down; fourteen.right = ri; fourteen.left = le; }
-        else if(i == 15){ fifteen.top = up; fifteen.bottom = down; fifteen.right = ri; fifteen.left = le; }
-        else if(i == 16){ sixteen.top = up; sixteen.bottom = down; sixteen.right = ri; sixteen.left = le; }
+    int i = 1;
+    while(i < 17) {
+        cout << "Top Gear on tile #" << i << ": "; cin >> up;
+        (*numToPointer(i)).top = up;
+        cout << "Bottom Gear on tile #" << i << ": "; cin >> down;
+        (*numToPointer(i)).bottom = down;
+        cout << "Rightmost Gear on tile #" << i << ": "; cin >> ri;
+        (*numToPointer(i)).right = ri;
+        cout << "Leftmost Gear on tile #" << i << ": "; cin >> le;
+        (*numToPointer(i)).left = le;
+        i++;
     }
     
-
     int tileOrder[16] = {0}, index = 0; // int array size 16 that representd the grid going from right to left starting from the top to the bottom
     tileOrder[index] = 1;
 
@@ -145,35 +125,6 @@ int main(){
             }
         }
     }
-
-/*
-    while(index > -1) { // code runs until we cant backtrack anymore
-        index++;
-        if(index == 16) { // prints the solution if we made it through all 16 spaces (0-15) succesfully, then backtrack
-            print(tileOrder);
-            index--;
-        }
-        else {
-            tileOrder[index] = 0; // set value to 0 so goes to 1 when we increase it
-        }
-        while(index > -1) {
-            tileOrder[index]++;
-            if(tileOrder[index] == 17) { // if we ran out of tiles
-                index--;
-            }
-            else {
-                // rotate to original direction
-            }
-            while(___) {
-                if(/* rotation at 5th option *//*) {
-                    // backtrack?
-                }
-                else if(ok(tileOrder,index)) { // if we can put a tile in this spot, break out of the loop and go to the next space
-                    break;
-                }
-            }
-        }
-    } */
 
     return 0;
 }
