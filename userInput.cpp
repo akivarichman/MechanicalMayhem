@@ -1,6 +1,8 @@
 #include <iostream>
 using namespace std;
 
+// this uses pointers whereas main doesnt...
+
 struct tileNum { // create a struct called "tileNumber" that has four string characteristics (top, right, bottom, left)
     string top;
     string bottom;
