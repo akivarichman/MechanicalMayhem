@@ -3,6 +3,7 @@
 using namespace std;
 
 // - have to check user input
+//    - but also not necessarily if this is just solving mayhem
 //    - empty white space
 //    - do I care about capital vs lowercase
 //    - there should be a message for no solution 
@@ -66,22 +67,22 @@ int main(){
     // Gear names: tooManyOne / orangeOneOne / smallOne / sunLookingOne / dontGoTogether / boatOne / spikeyOneyOne / bigOne   
     // Directions: top / bottom / right / left
     
-    placeGears(one, "boatOne" , "orangeOne" , "orangeOne" , "spikeyOne");
-    placeGears(two,"sunLookingOne","orangeOne", "tooManyOne" , "tooManyOne");
-    placeGears(three, "smallOne" , "tooManyOne" , "bigOne" , "sunLookingOne");
-    placeGears(four, "tooManyOne" , "smallOne" , "sunLookingOne" , "orangeOne");
-    placeGears(five, "smallOne" , "boatOne" , "tooManyOne" , "sunLookingOne");
-    placeGears(six, "orangeOne" , "sunLookingOne" , "orangeOne" , "tooManyOne");
-    placeGears(seven, "orangeOne" , "tooManyOne" , "sunLookingOne" , "orangeOne");
-    placeGears(eight, "orangeOne" , "boatOne" , "tooManyOne" , "spikeyOne");
-    placeGears(nine, "tooManyOne" , "tooManyOne" , "spikeyOne" , "sunLookingOne");
-    placeGears(ten, "dontGoTogether" , "bigOne" , "boatOne" , "bigOne");
-    placeGears(eleven, "orangeOne" , "tooManyOne" , "sunLookingOne" , "boatOne");
-    placeGears(twelve, "smallOne" , "dontGoTogether" , "spikeyOne" , "smallOne");
-    placeGears(thirteen, "tooManyOne" , "smallOne" , "sunLookingOne" , "bigOne");
-    placeGears(fourteen, "smallOne" , "sunLookingOne" , "tooManyOne" , "sunLookingOne");
-    placeGears(fifteen, "sunLookingOne" , "orangeOne" , "smallOne" , "tooManyOne");
-    placeGears(sixteen, "sunLookingOne" , "orangeOne" , "tooManyOne" , "sunLookingOne");
+    placeGears(one, "smallOne" , "tooManyOne" , "bigOne" , "sunLookingOne");
+    placeGears(two, "tooManyOne" , "smallOne" , "sunLookingOne" , "bigOne");
+    placeGears(three, "smallOne" , "sunLookingOne" , "tooManyOne" , "sunLookingOne");
+    placeGears(four, "sunLookingOne" , "orangeOne" , "smallOne" , "tooManyOne");
+    placeGears(five, "tooManyOne" , "smallOne" , "sunLookingOne" , "orangeOne");
+    placeGears(six, "smallOne" , "boatOne" , "tooManyOne" , "sunLookingOne");
+    placeGears(seven,"sunLookingOne","orangeOne", "tooManyOne" , "tooManyOne");
+    placeGears(eight, "orangeOne" , "sunLookingOne" , "orangeOne" , "tooManyOne");
+    placeGears(nine, "smallOne" , "dontGoTogether" , "spikeyOne" , "smallOne");
+    placeGears(ten, "boatOne" , "orangeOne" , "orangeOne" , "spikeyOne");
+    placeGears(eleven, "orangeOne" , "tooManyOne" , "sunLookingOne" , "orangeOne");
+    placeGears(twelve, "sunLookingOne" , "orangeOne" , "tooManyOne" , "sunLookingOne");
+    placeGears(thirteen, "dontGoTogether" , "bigOne" , "boatOne" , "bigOne");
+    placeGears(fourteen, "orangeOne" , "tooManyOne" , "sunLookingOne" , "boatOne");
+    placeGears(fifteen, "tooManyOne" , "tooManyOne" , "spikeyOne" , "sunLookingOne");
+    placeGears(sixteen, "orangeOne" , "boatOne" , "tooManyOne" , "spikeyOne");
 
     int tileOrder[16], index = 0; // int array size 16 that representd the grid going from right to left starting from the top to the bottom
     tileOrder[index] = 1;
